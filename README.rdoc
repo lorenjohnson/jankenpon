@@ -1,3 +1,40 @@
 == Jan-Ken-Pon (Rock, Paper, Scissors)
 
-Evidenlty the Japanese settle many a dispute this way.
+Evidently the Japanese settle many a dispute this way.
+
+--
+
+Generated basic Rails 3.2.13 app and installed a couple basic Gems to my liking. 
+
+--
+
+
+So, Rock, Paper, Scissors... 
+
+With a few days to mull this over
+in my head before starting on it I have tried to not over-think
+the problem in the spirit of not spending too much time, time I 
+don't have anyway.
+
+...
+
+So, a beautifully madenningly simple problem :)
+
+How shall I model this without over-doing it while demonstrating
+my very solid architectural good sense?
+
+Shall the computer learn and try and predict behaviour of us 
+poor predictable humans, or go purely random and focus on a
+little UI fun to keep it interesting.
+
+I don't like extra code, I don't want to prematurely optimize
+and somehow making the computer fister too smart at this 
+phase for such a simple assignment seems overkill.
+
+Let's just go with the basics, make it as concise and clear as 
+possible, because that's what I love in code and why I love Ruby.
+
+Then I'll Google Image search a Jan, Ken and Pon and throw those 
+in there for good measure.
+
+Ok, on with the show.
