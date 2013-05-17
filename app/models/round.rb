@@ -2,7 +2,7 @@ class Round < ActiveRecord::Base
   attr_accessible :user_move, :session_id
   attr_accessor :result
 
-  validates :user_move, :computer_move, presence: true
+  validates :user_move, presence: true
 
   before_save :set_computer_move
 
@@ -56,8 +56,6 @@ private
       'paper'
     when 3
       'scissors'
-    else
-      "I quit"
     end    
   end
 
