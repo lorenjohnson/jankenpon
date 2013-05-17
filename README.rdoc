@@ -21,6 +21,68 @@ I've went with a fairly minimal interface, clock one of the human hands to play.
 
 To "Start Over" in the upper right corner (this will clear entries for your current session id). 
 
-=== Narrative
+=== Implementation Narrative
 
-Please refer to https://github.com/lorenjohnson/jankenpon/blob/master/doc/README_FOR_APP for complete narrative.
+1) Basic app setup:
+
+> rvm use 1.9.3
+> rvm gemset create jankenpon
+> gem install rails
+> rails new jankenpon
+> cd jankenpon
+<create .rvmrc NOTE: will force gemset creation>
+<edit Gemfile adding 'haml-rails'>
+> bundle install
+
+
+2) Modeled the Jankenpon game "engine".
+
+I have a Round class, could have been Match, Game or Fist or something, but Round seemed reasonable enough.
+
+I decided early-on to persist (sqlite3) rounds as when playing in reality with another person I can't remember ever just playing once. It's kinda a game of averages to me. (That, and as I chose to do this as a Rails app, well it's just so easy to persist stuff.)
+
+> rails g resource round
+
+Round#set_computer_move
+Set in a before_save callback I get the randomized computers move. Nice, I like this new Ruby 1.9.2+ Random class. Hadn't seen that one yet. Still never really trust computer "random" though... Of course this method could be extended to handle machine learning as we're storing a history of user moves.
+
+Round#result
+The "core business logic" :) of the app returning whether the round was :won, :lost or :tied from the perspective of the user I paused for a bit wondering if I should normalize or embellish here further, but honestly my highest order of business generally in Ruby is to maintain explicit and readable code more than be sly. 
+
+Round#won?, Round#lost?
+These helper methods were added later as I developed the Views and wanted things to be a little clearer.
+
+
+3) Controller / Session: Plumbing
+
+<edit app/controllers/rounds_controller.rb>
+RoundsController#index, RoundsController#create, RoundsController#destroy
+Not much to say here. The basic fitting to a resource. If I Ajax'ified things I'd have a couple more actions ("new", for instance).
+
+<edit app/controllers/application_controller.rb>
+This init_session before_filter in the ApplicationController#init_session before_filter was necessary due to an issue (?) with Rails instantiating a session on the initial request if some value is not set in the session hash.
+
+
+4)  View layers: Make it fun and pretty
+
+<create app/views/rounds/index.html.haml>
+<edit app/assets/javascripts/applications.js>
+<edit app/assets/stylesheets/applications.css.scss>
+<add app/assets/images/*>
+
+I tried a few versions of the view before settling. Based on how I set things up there was more space to play on the front-end of things here than back-end. I went over the allocated 2 hrs a bit and this playing was the reason for it. I confess, at one point I had implemented 3d CSS cubes to present the rounds, thought it'd be cute to have "3d Jankenpo!" but that was too cute and so I ripped them out. 
+
+...grabbed images from Wikipedia and a Google Image Search to find a passable "computer" hand (just didn't feel right to have the computer play with a fleshy hand).
+
+<edit app/controllers/rounds_controller.rb>
+In general I changed things in here a few times as I wrapped-up / tidyed the view. 
+
+
+5) Wrap-up / self-grading:
+
+I've been pretty deep into a re-factoring of a large application for months over here and kinda needed something to play with for a night. That is my excuse for having given this app more like 4 hrs than 1-2 hrs as instructed.
+
+Also, I've importantly drifted from the instruction to Git commit frequently explaining myself as I went in real-time. I liked that plan, I understood the intention and appreciated it: to get a sense for how I approach a problem and it's implementation. I hope this narrative in addition to the incremental set of commits I am making helps to clear things up.
+
+I've written no Tests or Specs. That just felt too much, too academic for the purpose of this exercise.
+
