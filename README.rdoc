@@ -13,10 +13,14 @@ This group version could have been a fun thing to study and implement. However, 
 
 Assuming you use RVM you should be able to just:
 
-1. clone from Github: 
+1. git clone git@github.com:lorenjohnson/jankenpon.git
 2. bundle install
 3. rails s
 
 I've went with a fairly minimal interface, clock one of the human hands to play. Then wash and repeat. Each round is stored and presented below the currently played round with an accumulation of your winds in the current round to the left and the computer wins to the right.
 
 To "Start Over" in the upper right corner (this will clear entries for your current session id). 
+
+=== Narrative
+
+Please refer to https://github.com/lorenjohnson/jankenpon/blob/master/doc/README_FOR_APP for complete narrative.
