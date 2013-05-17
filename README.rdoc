@@ -1,40 +1,22 @@
-== Jan-Ken-Pon (Rock, Paper, Scissors)
+=== Jan-Ken-Pon
 
-Evidently the Japanese settle many a dispute this way.
+Otherwise know as "Rock, Paper, Scissors" this hand game has a Chinese origin
+and migrated and popularized in Japan long ago as a social way of settling 
+disputes. In Japanese the symbols are the same and in Japaense are
+Jan, Ken, Pon. 
 
---
+Evidently in Japan babies learn this before they learn to speak and there is a common way of playing in large groups (20 people+) where a single winner is arrived at in a very short period of time. 
 
-Generated basic Rails 3.2.13 app and installed a couple basic Gems to my liking. 
+This group version could have been a fun thing to study and implement. However, in the interest of time and in not "overdoing it" for what is intended as a simple exercise, I went the simpler route and focused on a clear implementation exhibiting a simple full-stack Rails implementation of one player vs computer.
 
---
+=== Setup
 
+Assuming you use RVM you should be able to just:
 
-So, Rock, Paper, Scissors... 
+1. clone from Github: 
+2. bundle install
+3. rails s
 
-With a few days to mull this over
-in my head before starting on it I have tried to not over-think
-the problem in the spirit of not spending too much time, time I 
-don't have anyway.
+I've went with a fairly minimal interface, clock one of the human hands to play. Then wash and repeat. Each round is stored and presented below the currently played round with an accumulation of your winds in the current round to the left and the computer wins to the right.
 
-...
-
-So, a beautifully madenningly simple problem :)
-
-How shall I model this without over-doing it while demonstrating
-my very solid architectural good sense?
-
-Shall the computer learn and try and predict behaviour of us 
-poor predictable humans, or go purely random and focus on a
-little UI fun to keep it interesting.
-
-I don't like extra code, I don't want to prematurely optimize
-and somehow making the computer fister too smart at this 
-phase for such a simple assignment seems overkill.
-
-Let's just go with the basics, make it as concise and clear as 
-possible, because that's what I love in code and why I love Ruby.
-
-Then I'll Google Image search a Jan, Ken and Pon and throw those 
-in there for good measure.
-
-Ok, on with the show.
+To "Start Over" in the upper right corner (this will clear entries for your current session id). 
