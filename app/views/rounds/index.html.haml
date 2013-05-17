@@ -1,0 +1,30 @@
+= link_to "Start Over", round_path(session[:session_id] || 1), method: 'delete', style: "float:right"
+%h1 Jan-Ken-Pon!
+- if flash[:notice]
+  %h1= flash[:notice]
+
+= form_for @new_round do |f|
+  = f.hidden_field :session_id, value: session[:session_id]
+  = f.hidden_field :user_move
+  .option_links
+    = image_tag("human_rock_big.png", title: "rock")
+    = image_tag("human_paper_big.png", title: "paper")
+    = image_tag("human_scissors_big.png", title: "scissors")
+  
+- if @round
+  .result{class: @round.result}
+    %p{class: ("won" if @round.won?)}
+      = @won_count
+    %p{class: ("won" if @round.lost?)}
+      = @lost_count
+    .clear
+    = image_tag "human_#{@round.user_move}_big.png", style: "width: 350px"
+    = image_tag "computer_#{@round.computer_move}.png", style: "width: 250px"
+
+- unless @rounds.empty?
+  .rounds
+    - @rounds.each do |r|
+      .round{class: r.result}
+        .move{class: r.user_move}
+        .move.computer{class: r.computer_move}
+
