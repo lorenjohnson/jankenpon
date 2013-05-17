@@ -1,0 +1,3 @@
+rock: { user_move: "rock", session_id: 100}
+scissors: { user_move: "scissors", session_id: 200 }
+paper: { user_move: "paper", session_id: 300 }
