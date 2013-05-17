@@ -26,6 +26,10 @@ h1 {
   margin: 0px auto;
 }
 
+#start_over {
+  float:right;
+}
+
 .result {
   display: block;
   overflow: hidden;
@@ -33,15 +37,21 @@ h1 {
   margin-top: 14px;
   background-color:rgb(255,255,255);
   border-radius: 22px;
+  img:nth-of-type(1) {
+    width: 350px;
+  }
+  img:nth-of-type(2) {
+    width: 250px;
+  }  
   p {
     margin-bottom: 0px;
     font-size: 3em; 
   }
-  p:nth-child(1) {
+  p:nth-of-type(1) {
     margin-left: 3em;
     float: left;
   }
-  p:nth-child(2) {
+  p:nth-of-type(2) {
     margin-right: 3em;
     float: right;
   }

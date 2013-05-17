@@ -1,4 +1,4 @@
-= link_to "Start Over", round_path(session[:session_id] || 1), method: 'delete', style: "float:right"
+= link_to "Start Over", round_path(session[:session_id] || 1), method: 'delete', id: "start_over"
 %h1 Jan-Ken-Pon!
 - if flash[:notice]
   %h1= flash[:notice]
@@ -18,8 +18,8 @@
     %p{class: ("won" if @round.lost?)}
       = @lost_count
     .clear
-    = image_tag "human_#{@round.user_move}_big.png", style: "width: 350px"
-    = image_tag "computer_#{@round.computer_move}.png", style: "width: 250px"
+    = image_tag "human_#{@round.user_move}_big.png"
+    = image_tag "computer_#{@round.computer_move}.png"
 
 - unless @rounds.empty?
   .rounds
