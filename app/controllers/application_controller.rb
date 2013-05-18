@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
 private 
 
-  # Necessary to ensure that the session is available on first request
+  # Lazy-loaded cookies need to be jump-started
   def init_session
     session[:init] = true
   end
