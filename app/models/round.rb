@@ -22,13 +22,13 @@ private
 
   def set_computer_move
     self.computer_move = case Random.rand(1..3)
-    when 1
-      'rock'
-    when 2
-      'paper'
-    when 3
-      'scissors'
-    end    
+                         when 1
+                           'rock'
+                         when 2
+                           'paper'
+                         when 3
+                           'scissors'
+                         end    
   end
 
 end
