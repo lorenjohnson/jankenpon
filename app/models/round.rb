@@ -13,37 +13,9 @@ class Round < ActiveRecord::Base
   def lost?
     result == :lost unless self.user_move.blank?
   end
-
+  
   def result
-    case self.user_move
-    when "scissors"
-      case self.computer_move
-      when "scissors"
-        :tied
-      when "paper"
-        :won
-      when "rock"
-        :lost
-      end
-    when "paper"
-      case self.computer_move
-      when "scissors"
-        :lost
-      when "paper"
-        :tied
-      when "rock"
-        :won
-      end
-    when "rock"
-      case self.computer_move
-      when "scissors"
-        :won
-      when "paper"
-        :lost
-      when "rock"
-        :tied
-      end
-    end
+    JanKenPonGame.play(self.user_move, self.computer_move)
   end
 
 private
