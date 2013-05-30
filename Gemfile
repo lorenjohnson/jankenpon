@@ -13,5 +13,7 @@ end
 
 gem 'jquery-rails'
 
+gem 'pry'
+
 # Brownie points... :)
 gem 'newrelic_rpm', ">= 3.1"
